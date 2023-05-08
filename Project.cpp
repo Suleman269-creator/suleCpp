@@ -62,20 +62,20 @@ void login(){
 
 void registration(){
  
-        string full_name, Address , username, password;
+        string Address , username, password;
         system("cls");
-        cout<<"Enter full name: ";
-        cin>>full_name;
-        cout<<endl;
         cout<<"Enter Username: ";
         cin>>username;
         cout<<endl;
         cout<<"Enter the Password : ";
         cin>>password;
         cout<<endl;
+        cout<<"Enter Address: ";
+        cin>>Address;
+        cout<<endl;
         
         ofstream f1("records.txt",ios::app);
-        f1<<full_name<<" "<<username<<" "<<password<<" "<<endl;
+        f1<<username<<" "<<password<<" "<<Address<<endl;
         system("cls");
         cout<<"\nRegistration is successful\n";
         main();
@@ -83,11 +83,44 @@ void registration(){
 
 
 void menu() {
-	int c;
+	int a;
 	cout<<"Hi, Welcome to the Kelectric WhatsApp Self Service"<<endl;
 	cout<<"For the desired service, reply with the option number."<<endl;
-
+	cout<<"\n\t(1) Duplicate Bill "<<endl;
+	cout<<"\n\t(2) Technical Complaints "<<endl;
+	cout<<"\n\t(3) Billing Complaints "<<endl;
+	cout<<"\n\t(4) Power Status & Load Shedding Schedule "<<endl;
+	cout<<"\n\t(5) New Connections "<<endl;
+	cout<<"\n\t(6) Find Us "<<endl;
+	cout<<"\n\t(0) Exit"<<endl<<endl;
 	
+	cout<<"Enter Your choice: ";
+	cin>>a;
+	
+	if (a==1) {
+		cout<<"Duplicate func";
+	}
+	else if (a==2) {
+		cout<<"Technical func";
+	}
+	else if (a==3) {
+		cout<<"Bill Func";
+	}
+	else if (a==4){
+		cout<<"Power Func";
+	}
+	else if (a==5){
+		cout<<"New func";
+	}
+	else if (a==6){
+		cout<<"Find func";
+	}
+	else if (a==0) {
+		cout<<"Exit";
+	}
+	else {
+		cout<<"Invalid Input";
+	}
 	
 	
 	
