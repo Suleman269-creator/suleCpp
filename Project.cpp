@@ -4,10 +4,10 @@
 using namespace std;
 void login();
 void registration();
-void menu();
-void month();
-void bill();
-void user_d();
+void menu(string);
+void month(string);
+void bill(string);
+void user_d(string);
 int main(){
     int c;
     cout<<"\t\t\t-----KElectric Portal-----\t\t\t"<<endl<<endl<<endl;
@@ -54,37 +54,40 @@ void login(){
         cout<<"Successfully Login";
         sleep(2);
         system ("cls");
-        menu();
+        menu(username);
     }else{
         system("cls");
         cout<<"Invalid Information"<<endl;
     }
   
+  
+  
 }
 
 void registration(){
  
-        string Address , username, password;
+        string username, password , acc_num, address, city, province;
         system("cls");
         cout<<"Enter Username: ";
         cin>>username;
-        cout<<endl;
         cout<<"Enter the Password : ";
         cin>>password;
-        cout<<endl;
         cout<<"Enter Address: ";
-        cin>>Address;
-        cout<<endl;
+        cin>>address;
+        cout<<"Enter City: ";
+        cin>>city;
         
         ofstream f1("records.txt",ios::app);
-        f1<<username<<" "<<password<<" "<<Address<<endl;
+        f1<<username<<" "<<password<<" "<<endl;
         system("cls");
+        ofstream f2("user_details.txt",ios::app);
+        f2<<username<<" "<<" "<<address<<" "<<city<<" "<<endl;
         cout<<"\nRegistration is successful\n";
         main();
     }
 
 
-void menu() {
+void menu(string username) {
 	int a;
 		
 	cout<<"Hi, Welcome to the Kelectric WhatsApp Self Service"<<endl;
@@ -101,8 +104,8 @@ void menu() {
 	cin>>a;
 	
 	if (a==1) {
-		month();
-		month();
+		month(username);
+		month(username);
 		
 	}
 	else if (a==2) {
@@ -131,7 +134,7 @@ void menu() {
 }
 
 
-void month (){
+void month (string username){
 	const int max= 12;
 	string mon[max] = {"(1) Jan-2023" , "(2) Feb-2023 " , "(3) Mar-2023" , "(4) Apr-2023" , "(5) May-2023" , 
 	"(6) Jun-2023" , "(7) Jul-2023", "(8) Aug-2023" , "(9) Sep-2023", "(10) Oct-2023", "(11) Nov-2023" , "(12) Dec-2023"};
@@ -142,24 +145,24 @@ void month (){
 	}
 	cout<<"(0) Main Menu"<<endl;
 	
-	bill();
+	bill(username);
 
 }
 
-void bill(){
+void bill(string username){
 	
-void jan();
-void feb();
-void Mar();
-void Apr();
-void May();
-void Jun();
-void Jul();
-void Aug();
-void Sep();
-void Oct();
-void Nov();
-void Dec();
+void jan(string username);
+void feb(string username);
+void Mar(string username);
+void Apr(string username);
+void May(string username);
+void Jun(string username);
+void Jul(string username);
+void Aug(string username);
+void Sep(string username);
+void Oct(string username);
+void Nov(string username);
+void Dec(string username);
 	
 
 	int x;
@@ -169,7 +172,7 @@ void Dec();
 	if (x==0) {
 		sleep(3);
 		system("cls");
-		menu();
+		menu(username);
 	}
 	
 	else {
@@ -178,147 +181,134 @@ void Dec();
 	sleep(3);
 	system("cls");
 		if (x==1){
-		jan();
+		jan(username);
 	}
 	else if (x==2){
-		feb();
+		feb(username);
 	}
 	else if (x==3) {
-		Mar();
+		Mar(username);
 	}
 	else if (x==4) {
-		Apr();
+		Apr(username);
 	}
 	else if (x==5){
-		May();
+		May(username);
 	}
 	else if (x==6){
-		Jun();
+		Jun(username);
 	}
 	else if (x==7) {
-		Jul();
+		Jul(username);
 	}
 	else if (x==8){
-	    Aug();
+	    Aug(username);
 	}
 	else if (x==9){
-		Sep();
+		Sep(username);
 	}
 	else if (x==10){
-		Oct();
+		Oct(username);
 	}
 	else if (x==11){
-		Nov();
+		Nov(username);
 	}
 	else if (x==12){
-	    Dec();
+	    Dec(username);
 	}
 }
 }
 
-void jan() {
-	user_d();
+void jan(string username) {
+
+    user_d(username);
 	cout<<endl;
 	cout<<"jan\n";
 }
 
-void feb() {
-	user_d();
+void feb(string username) {
+	user_d(username);
 	cout<<endl;
 	cout<<"feb\n";
 }
-void Mar(){
-	user_d();
+void Mar(string username){
+	
+	user_d(username);
 	cout<<endl;
 	cout<<"Mar\n";
 }
-void Apr(){
-	user_d();
+void Apr(string username){
+	user_d(username);
 	cout<<endl;
 	cout<<"Apr\n";
 }
-void May(){
-	user_d();
+void May(string username){
+	user_d(username);
 	cout<<endl;
 	cout<<"May\n";
 }
-void Jun(){
-	user_d();
+void Jun(string username){
+	
+
 	cout<<endl;
 	cout<<"Jun\n";
 }
-void Jul(){
-	user_d();
+void Jul(string username){
+
 	cout<<endl;
 	cout<<"Jul\n";
 }
-void Aug(){
-	user_d();
+void Aug(string username){
+
 	cout<<endl;
 	cout<<"Aug\n";
 }
-void Sep(){
-	user_d();
+void Sep(string username){
+
 	cout<<endl;
 	cout<<"Sep\n";
 }
-void Oct(){
-	user_d();
+void Oct(string username){
+	
 	cout<<endl;
 	cout<<"Oct\n";
 }
-void Nov(){
-	user_d();
+void Nov(string username){
+
 	cout<<endl;
 	cout<<"Nov\n";
 }
-void Dec(){
-	user_d();
+void Dec(string username){
+
 	cout<<endl;
 	cout<<"Dec\n";
 }
 
 
-
-void user_d() {
+void user_d(string username) {
 	
-	string acc_num, name, address, city, province;
-	string a_n , n , add , c , pro;
-	bool found2 = false ;
-
-    cout<<"Enter account number: ";
-    cin>>acc_num;
-    cout<<"Enter name: ";
-    cin>>name;
-    cout<<"Enter address: ";
-    cin>>address;
-    cout<<"Enter city: ";
-    cin>>city;
-    cout<<"Enter province: ";
-    cin>>province;
-
-    // Save user details to file
-    ofstream outfile;
-    outfile.open("user_details.txt", ios::app);
-    outfile<<acc_num<< ","<<name<<","<<address<<","<<city<<","<<province<<endl;
-    outfile.close();
-    
-    ifstream file2("user_details.txt");
-
-    while(file2>>a_n>>n>>add>>c>>pro){
-       
-        if(a_n==acc_num && n==name && add==address && c==city && pro==province){
-            found2= true;
-            cout<<acc_num<<endl;
-            cout<<name<<endl;
-            cout<<address<<endl;
-            cout<<city<<endl;
-            cout<<province<<endl;
-            break;
+	string search_string = username;
+	ifstream file("user_details.txt");
+    string line;
+    bool isfound = false;
+    cout<<"\t---------------- USER INFORMATION ----------------"<<endl<<endl;
+    while (getline(file, line)) {
+        if (line.find(search_string) != string::npos) {
+            cout <<"\t"<< line << endl;
+         isfound = true; 
         }
     }
-    file2.close();
 
-    
-    
+    file.close();
 }
+
+
+
+
+
+
+
+
+
+
+
