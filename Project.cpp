@@ -1,6 +1,7 @@
 #include<iostream>
 #include<fstream>
 #include <unistd.h>
+#include <cstdlib>
 using namespace std;
 void login();
 void registration();
@@ -80,9 +81,20 @@ void registration(){
         ofstream f1("records.txt",ios::app);
         f1<<username<<" "<<password<<" "<<endl;
         system("cls");
+        int con_arr[]= {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        int size = 0;
+        for (int i=0 ; i<13 ; i++) {
+        	con_arr[i]= rand();
+        	size++;
+        }
+        
+    unsigned int consumer_num = 0; 
+	for (int i = 0; i <13; i++)  {
+	 consumer_num = consumer_num * 10 + rand() % 10;
+	}
         ofstream f2("user_details.txt",ios::app);
-        f2<<username<<" "<<" "<<address<<" "<<city<<" "<<endl;
-        cout<<"\nRegistration is successful\n";
+        f2<<username<<" "<<address<<" "<<city<<" "<<consumer_num<< endl;
+		cout<<"\nRegistration is successful\n";
         main();
     }
 
