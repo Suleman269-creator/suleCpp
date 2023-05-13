@@ -1,78 +1,60 @@
-//Muhammad Suleman Nagri (Sp23-Bscs-0011)
-//Rija Khan (Sp23-Bscs-0210)
 
 #include <iostream>
 using namespace std;
-void arr(int row_m1_size , int col_m1_size , int row_m2_size , int col_m2_size );
+void sub_arr(int row_m1_size , int col_m1_size , int row_m2_size , int col_m2_size );
 
 int main (){
 	int row_m1_size , col_m1_size;
 	int row_m2_size , col_m2_size;
 	
-	cout<<"Enter Matrice one Row Size: ";
+	cout<<"Enter one Row Size: ";
 	cin>>row_m1_size;
 	cout<<endl;
-	cout<<"Enter Matrice one Column Size: ";
+	cout<<"Enter one Column Size: ";
 	cin>>col_m1_size;
 	cout<<endl;
-	cout<<"Enter Matrice second Row Size: ";
+	cout<<"Enter second Row Size: ";
 	cin>>row_m2_size;
 	cout<<endl;
-	cout<<"Enter Matrice second Column Size: ";
+	cout<<"Enter second Column Size: ";
 	cin>>col_m2_size;
 	
-	if (row_m2_size == col_m1_size) {
-
-	if (row_m1_size>=5 && row_m2_size>=5 && row_m1_size<=10 && row_m2_size<=10 || col_m1_size>=5 && col_m2_size>=5 && col_m1_size<=10 && col_m1_size<=10) 
-	{ 
-	 arr(row_m1_size , col_m1_size , row_m2_size , col_m2_size); 
-	}
-	
-	 else {
-	cout<<"Matrices should be in order between 5 to 10";
-}
-
-}
-
-else {
-	cout<<"Matrix must be in this format [Diff Row of matrix 1 x Same Column of matrix 1 x Same Row of matrix2 x Diff Column of Matrix 2] ";
+	 sub_arr(row_m1_size , col_m1_size , row_m2_size , col_m2_size); 
 }
 
 
-}
-
-void arr(int row_m1_size , int col_m1_size , int row_m2_size , int col_m2_size ) {
+void sub_arr(int row_m1_size , int col_m1_size , int row_m2_size , int col_m2_size ) {
 	
 
-	int mat_1[row_m1_size] [col_m1_size] , mat_2[row_m2_size][col_m2_size] , mul_mat[10][10] ;
-	cout<<"Enter First Matrice Value \n";
+	int f_2d_array[row_m1_size] [col_m1_size] , S_2d_array[row_m2_size][col_m2_size] , subtract_arr[10][10] ;
+	cout<<"Enter First 2d array Value \n";
 	for (int i=0 ; i<row_m1_size ; i++) {
 		for (int j=0 ; j<col_m1_size ; j++ ) {
 			cout<<"Enter Numbers["<<i<<"] ["<<j<<"]: ";
-			cin>>mat_1[i][j];
+			cin>>f_2d_array[i][j];
 		}
 	} 
 	
-	cout<<"Matrice One: \n";
+	cout<<"First 2d array: \n";
 	for (int i=0 ; i<row_m1_size ; i++) {
 		for (int j=0 ; j<col_m2_size ; j++) {
-			cout<<mat_1[i][j]<<" ";
+			cout<<f_2d_array[i][j]<<" ";
 		}
 			cout<<endl;
 	}
 
-	cout<<"Enter Second Matrice Value \n";
+	cout<<"Enter Second 2d array Value \n";
 	for (int i=0 ; i<row_m2_size ; i++) {
 		for (int j=0 ; j<col_m2_size ; j++ ) {
 			cout<<"Enter Numbers["<<i<<"] ["<<j<<"]: ";
-			cin>>mat_2[i][j];
+			cin>>S_2d_array[i][j];
 		}
 	} 
 	
-	cout<<"Matrice Second: \n";
+	cout<<"Second 2d array: \n";
 	for (int i=0 ; i<row_m2_size ; i++) {
 		for (int j=0 ; j<col_m2_size ; j++) {
-			cout<<mat_2[i][j]<<" ";
+			cout<<S_2d_array[i][j]<<" ";
 		}
 		cout<<endl;
 	}
@@ -80,22 +62,20 @@ void arr(int row_m1_size , int col_m1_size , int row_m2_size , int col_m2_size )
 	
         
 	 for (int i=0 ; i<row_m1_size ; i++) {
-	 	for (int j=0 ; j<col_m2_size ; j++) {
-	 		mul_mat[i][j]=0;
-	 		for (int k=0 ; k<col_m1_size ; k++) {
-	 			mul_mat[i][j]= mul_mat[i][j] + mat_1[i][k] * mat_2[k][j];
+	 	for (int j=0 ; j<col_m2_size ; j++){
+	 			subtract_arr[i][j]= f_2d_array[i][j] - S_2d_array[i][j];
 			 }
 		 }
-	 }
 	 
-	 cout<<"Multiplication Of two matrix: "<<endl;
+	 
+	 cout<<"Subtract Of two 2d array: "<<endl;
 	 for (int i =0 ; i<row_m1_size ; i++) {
 	 	for (int j=0 ; j<col_m2_size ; j++) {
-	 		cout<<mul_mat[i][j]<<" ";
+	 		cout<<subtract_arr[i][j]<<" ";
 		}
 		cout<<endl;
 	 }	
 	
-}
 
+}
 

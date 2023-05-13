@@ -6,7 +6,8 @@ void login();
 void registration();
 void menu();
 void month();
-
+void bill();
+void user_d();
 int main(){
     int c;
     cout<<"\t\t\t-----KElectric Portal-----\t\t\t"<<endl<<endl<<endl;
@@ -140,6 +141,27 @@ void month (){
 		cout<<"\n"<<mon[i]<<endl;
 	}
 	cout<<"(0) Main Menu"<<endl;
+	
+	bill();
+
+}
+
+void bill(){
+	
+void jan();
+void feb();
+void Mar();
+void Apr();
+void May();
+void Jun();
+void Jul();
+void Aug();
+void Sep();
+void Oct();
+void Nov();
+void Dec();
+	
+
 	int x;
 	cout<<"\nReply No: ";
 	cin>>x;
@@ -155,43 +177,148 @@ void month (){
 	cout<<"Your Request for Duplicate Bill has been received. You will recieve the information below. "<<endl;
 	sleep(3);
 	system("cls");
-	
-	if (x==1){
-		cout<<"Jan Bill";
+		if (x==1){
+		jan();
 	}
 	else if (x==2){
-		cout<<"feb Bill";
+		feb();
 	}
 	else if (x==3) {
-		cout<<"Mar Bill";
+		Mar();
 	}
 	else if (x==4) {
-		cout<<"Apr Bill";
+		Apr();
 	}
 	else if (x==5){
-		cout<<"May Bill";
+		May();
 	}
 	else if (x==6){
-		cout<<"Jun bill";
+		Jun();
 	}
 	else if (x==7) {
-		cout<<"Jul bill";
+		Jul();
 	}
 	else if (x==8){
-	    cout<<"Aug bill";
+	    Aug();
 	}
 	else if (x==9){
-		cout<<"Sep bill";
+		Sep();
 	}
 	else if (x==10){
-		cout<<"Oct bill";
+		Oct();
 	}
 	else if (x==11){
-		cout<<"Nov bill";
+		Nov();
 	}
 	else if (x==12){
-		cout<<"Dec bill";
+	    Dec();
 	}
-	
 }
+}
+
+void jan() {
+	user_d();
+	cout<<endl;
+	cout<<"jan\n";
+}
+
+void feb() {
+	user_d();
+	cout<<endl;
+	cout<<"feb\n";
+}
+void Mar(){
+	user_d();
+	cout<<endl;
+	cout<<"Mar\n";
+}
+void Apr(){
+	user_d();
+	cout<<endl;
+	cout<<"Apr\n";
+}
+void May(){
+	user_d();
+	cout<<endl;
+	cout<<"May\n";
+}
+void Jun(){
+	user_d();
+	cout<<endl;
+	cout<<"Jun\n";
+}
+void Jul(){
+	user_d();
+	cout<<endl;
+	cout<<"Jul\n";
+}
+void Aug(){
+	user_d();
+	cout<<endl;
+	cout<<"Aug\n";
+}
+void Sep(){
+	user_d();
+	cout<<endl;
+	cout<<"Sep\n";
+}
+void Oct(){
+	user_d();
+	cout<<endl;
+	cout<<"Oct\n";
+}
+void Nov(){
+	user_d();
+	cout<<endl;
+	cout<<"Nov\n";
+}
+void Dec(){
+	user_d();
+	cout<<endl;
+	cout<<"Dec\n";
+}
+
+
+
+void user_d() {
+	
+	string acc_num, name, address, city, province;
+	string a_n , n , add , c , pro;
+	bool found2 = false ;
+
+    cout<<"Enter account number: ";
+    cin>>acc_num;
+    cout<<"Enter name: ";
+    cin>>name;
+    cout<<"Enter address: ";
+    cin>>address;
+    cout<<"Enter city: ";
+    cin>>city;
+    cout<<"Enter province: ";
+    cin>>province;
+
+    // Save user details to file
+    ofstream outfile;
+    outfile.open("user_details.txt", ios::app);
+    outfile<<acc_num<< ","<<name<<","<<address<<","<<city<<","<<province<<endl;
+    outfile.close();
+    
+    ifstream file2("user_details.txt");
+
+    while(file2>>a_n>>n>>add>>c>>pro){
+       
+        if(a_n==acc_num && n==name && add==address && c==city && pro==province){
+            found2= true;
+            cout<<acc_num<<endl;
+            cout<<name<<endl;
+            cout<<address<<endl;
+            cout<<city<<endl;
+            cout<<province<<endl;
+            break;
+        }
+    }
+    file2.close();
+
+    
+    
 }
