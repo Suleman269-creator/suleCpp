@@ -9,6 +9,7 @@ void menu(string);
 void month(string);
 void bill(string);
 void user_d(string);
+void bill_cal(string);
 int main(){
     int c;
     cout<<"\t\t\t-----KElectric Portal-----\t\t\t"<<endl<<endl<<endl;
@@ -31,7 +32,7 @@ int main(){
 
 void login(){
     
-    string username,password,un,pw;
+    string username,password, id , pass ;
     bool found = false;
     system("cls");
     cout<<"Enter Your username : ";
@@ -41,9 +42,9 @@ void login(){
 
     ifstream file("records.txt");
 
-    while(file>>un>>pw){
+    while(file>>id>>pass){
        
-        if(un == username && pw == password){
+        if(id == username && pass == password){
             found = true;
             break;
         }
@@ -104,7 +105,7 @@ void menu(string username) {
 		
 	cout<<"Hi, Welcome to the Kelectric WhatsApp Self Service"<<endl;
 	cout<<"For the desired service, reply with the option number."<<endl;
-	cout<<"\n\t(1) Duplicate Bill "<<endl;
+	cout<<"\n\t(1) Bill Generator "<<endl;
 	cout<<"\n\t(2) Technical Complaints "<<endl;
 	cout<<"\n\t(3) Billing Complaints "<<endl;
 	cout<<"\n\t(4) Power Status & Load Shedding Schedule "<<endl;
@@ -116,7 +117,6 @@ void menu(string username) {
 	cin>>a;
 	
 	if (a==1) {
-		month(username);
 		month(username);
 		
 	}
@@ -150,10 +150,10 @@ void month (string username){
 	const int max= 12;
 	string mon[max] = {"(1) Jan-2023" , "(2) Feb-2023 " , "(3) Mar-2023" , "(4) Apr-2023" , "(5) May-2023" , 
 	"(6) Jun-2023" , "(7) Jul-2023", "(8) Aug-2023" , "(9) Sep-2023", "(10) Oct-2023", "(11) Nov-2023" , "(12) Dec-2023"};
-	cout<<"Please reply with the number next to the month to recieve the bill. "<<endl;
+	cout<<"\nPlease reply with the number next to the month to recieve the bill. "<<endl;
 	
 	for (int i=0 ; i<=max ; i++) {
-		cout<<"\n"<<mon[i]<<endl;
+		cout<<"\n"<<mon[i];
 	}
 	cout<<"(0) Main Menu"<<endl;
 	
@@ -235,65 +235,88 @@ void jan(string username) {
 
     user_d(username);
 	cout<<endl;
-	cout<<"jan\n";
+	cout<<"\t----January----\t"<<endl<<endl;
+
+	bill_cal(username);
+	
 }
 
 void feb(string username) {
 	user_d(username);
 	cout<<endl;
-	cout<<"feb\n";
+cout<<"\t----February----\t"<<endl<<endl;
+	bill_cal(username);
 }
 void Mar(string username){
 	
 	user_d(username);
 	cout<<endl;
-	cout<<"Mar\n";
+cout<<"\t----March----\t"<<endl<<endl;
+	bill_cal(username);
+
 }
 void Apr(string username){
 	user_d(username);
 	cout<<endl;
-	cout<<"Apr\n";
+cout<<"\t----April----\t"<<endl<<endl;
+	bill_cal(username);
+
 }
 void May(string username){
 	user_d(username);
 	cout<<endl;
-	cout<<"May\n";
+cout<<"\t----May----\t"<<endl<<endl;
+	bill_cal(username);
+
 }
 void Jun(string username){
 	
-
 	cout<<endl;
-	cout<<"Jun\n";
+cout<<"\t----June----\t"<<endl<<endl;
+	bill_cal(username);
+
 }
 void Jul(string username){
 
 	cout<<endl;
-	cout<<"Jul\n";
+cout<<"\t----July----\t"<<endl<<endl;
+	bill_cal(username);
+
 }
 void Aug(string username){
 
 	cout<<endl;
-	cout<<"Aug\n";
+cout<<"\t----August----\t"<<endl<<endl;
+	bill_cal(username);
+
 }
 void Sep(string username){
 
 	cout<<endl;
-	cout<<"Sep\n";
+cout<<"\t----September----\t"<<endl<<endl;
+	bill_cal(username);
+
 }
 void Oct(string username){
 	
 	cout<<endl;
-	cout<<"Oct\n";
+cout<<"\t----October----\t"<<endl<<endl;
+	bill_cal(username);
+
 }
 void Nov(string username){
 
 	cout<<endl;
-	cout<<"Nov\n";
+cout<<"\t----November----\t"<<endl<<endl;
+	bill_cal(username);
+
 }
 void Dec(string username){
 
 	cout<<endl;
-	cout<<"Dec\n";
+cout<<"\t----December----\t"<<endl<<endl;
+	bill_cal(username);
+
 }
 
 
@@ -314,13 +337,25 @@ void user_d(string username) {
     file.close();
 }
 
-
-
-
-
-
-
-
-
+void bill_cal(string username){
+	int units;
+	cout<<"Enter Units: ";
+	cin>>units;
+	
+	int rate_1 = 15;
+	int rate_2 = 22;
+	int rate_3 = 25;
+	
+	if (units<=100) {
+		cout<<"Your Unit is according to rate_1 is "<<rate_1<<":\n"<<"You Total bill is: "<<units*rate_1<<"Rs";
+	}
+	else if (units<=200) {
+		cout<<"Your Unit is according to rate_2 is "<<rate_2<<":\n"<<"Your Total bill is: "<<units*rate_2<<"Rs";
+	}
+	else {
+	cout<<"Your Unit is according to rate_3 is "<<rate_3<<":\n"<<"Your Total bill is: "<<units*rate_3<<"Rs";
+	}
+	
+}
 
 
