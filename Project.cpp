@@ -2,6 +2,7 @@
 #include<fstream>
 #include <unistd.h>
 #include <cstdlib>
+#include <iomanip>
 using namespace std;
 void login();
 void registration();
@@ -10,6 +11,8 @@ void month(string);
 void bill(string);
 void user_d(string);
 void bill_cal(string);
+void tech(string);
+
 int main(){
     int c;
     cout<<"\t\t\t-----KElectric Portal-----\t\t\t"<<endl<<endl<<endl;
@@ -121,7 +124,7 @@ void menu(string username) {
 		
 	}
 	else if (a==2) {
-		cout<<"Technical func";
+		tech(username);
 	}
 	else if (a==3) {
 		cout<<"Bill Func";
@@ -357,5 +360,77 @@ void bill_cal(string username){
 	}
 	
 }
+
+void tech(string username) {
+	string array[4] = {"Broken Wire" , "Sparking" , "Meter Issue" , "Area Light Issue"};
+	for (int i=0 ; i<=3 ; i++){
+		cout<<setw(20)<<"Press "<<1+i<<" FOR "<<array[i];
+		cout<<endl;
+	}
+	
+	int opt;
+	cout<<"Press options: ";
+	cin>>opt;
+	
+	if (opt==1){
+	user_d(username);
+	string message;
+	cout<<"Enter Complain Message for Broken Wire (100 Word Limits): ";
+    cin.ignore();
+    getline(cin, message);
+
+    if (message.length()>1000) {
+        cout<<"Message exceeds the word limit of 1000 characters." << endl;
+    } else {
+        cout<<"Complaint Successfully Registered." << endl;
+    }
+}
+
+else if (opt==2) {
+	user_d(username);
+	string message;
+	cout<<"Enter Complain Message for Sparking (100 Word Limits): ";
+	    cin.ignore();
+    getline(cin, message);
+
+    if (message.length()>1000) {
+        cout<<"Message exceeds the word limit of 1000 characters." << endl;
+    } else {
+        cout<<"Complaint Successfully Registered." << endl;
+    }
+	
+}
+else if (opt==3){
+	user_d(username);
+	string message;
+	cout<<"Enter Complain Message for Meter Issue (100 Word Limits): ";
+    cin.ignore();
+    getline(cin, message);
+
+    if (message.length()>1000) {
+        cout<<"Message exceeds the word limit of 1000 characters." << endl;
+    } else {
+        cout<<"Complaint Successfully Registered." << endl;
+    }
+}
+else if (opt == 4) {
+    user_d(username);
+    string message;
+    cout << "Enter Complain Message for Area Light Issue (100 Word Limits): ";
+    cin.ignore();
+    getline(cin, message);
+
+    if (message.length()>1000) {
+        cout<<"Message exceeds the word limit of 1000 characters." << endl;
+    } else {
+        cout<<"Complaint Successfully Registered." << endl;
+    }
+}
+else {
+	cout<<"Invalid Option";
+	menu(username);
+}
+}
+
 
 
