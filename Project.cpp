@@ -3,6 +3,9 @@
 #include <unistd.h>
 #include <cstdlib>
 #include <iomanip>
+#include <ctime>
+#include <string>
+#include <limits>
 using namespace std;
 void login();
 void registration();
@@ -12,6 +15,9 @@ void bill(string);
 void user_d(string);
 void bill_cal(string);
 void tech(string);
+void bill_comp(string);
+void power_status(string);
+void find_us(string);
 
 int main(){
     int c;
@@ -112,9 +118,8 @@ void menu(string username) {
 	cout<<"\n\t(2) Technical Complaints "<<endl;
 	cout<<"\n\t(3) Billing Complaints "<<endl;
 	cout<<"\n\t(4) Power Status & Load Shedding Schedule "<<endl;
-	cout<<"\n\t(5) New Connections "<<endl;
-	cout<<"\n\t(6) Find Us "<<endl;
-	cout<<"\n\t(7) Exit"<<endl<<endl;
+	cout<<"\n\t(5) Find Us "<<endl;
+	cout<<"\n\t(6) Exit"<<endl<<endl;
 	
 	cout<<"Enter Your choice: ";
 	cin>>a;
@@ -126,19 +131,16 @@ void menu(string username) {
 	else if (a==2) {
 		tech(username);
 	}
-	else if (a==3) {
-		cout<<"Bill Func";
+	else if (a==3) { 
+		bill_comp(username);
 	}
 	else if (a==4){
-		cout<<"Power Func";
-	}
+		power_status(username);
+}
 	else if (a==5){
-		cout<<"New func";
+		find_us(username);
 	}
-	else if (a==6){
-		cout<<"Find func";
-	}
-	else if (a==7) {
+	else if (a==6) {
 		cout<<"Exit";
 	}
 	else {
@@ -433,4 +435,197 @@ else {
 }
 
 
+void bill_comp(string username) {
+	user_d(username);
+	string complain;
+	cout<<"\nDefine Billing Issue Here (100 Words Limits): ";
+	cin.ignore();
+	getline(cin , complain);
+	
+	if (complain.length()>1000) {
+		cout<<"Message exceeds the word limit of 1000 characters."<<endl;
+	}
+	else {
+		cout<<"Complaint Successfully Registered.";
+	}
+	}
+	
+	
+void power_status(string username){
 
+void areas_name(string);
+int area;
+cout<<"---------------------------------------------------------------------------------------------------------------------\n\n";
+cout<<"\t\t\t\t\tArea Names\t\t\t\t";
+cout<<"\n\n---------------------------------------------------------------------------------------------------------------------\n\n";
+areas_name(username);
+cout<<endl;
+  while (true) {
+        cout << "Enter Number According to Your Area: ";
+        if (!(cin >> area)) {
+            cout << "Invalid Input! Please enter a number.\n";
+            cin.clear();  // Clear error state
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');  // Discard remaining input
+            continue;
+        }
+
+        if (area >= 1 && area <= 22) {
+            break;  // Valid option chosen, exit the loop
+        }
+
+        cout << "Invalid Input! Choose Correct Option.\n";
+        areas_name(username);
+    }
+	
+	
+if (area == 1) {
+	cout<<"Power Status: Loadshedding Free Area";
+}
+
+else if (area==2){
+	cout<<"Power Status: Loadshedding Free Area";
+}
+
+else if (area==3){
+	cout<<"Power Status: Loadshedding Schedule\n";
+	cout<<"\t8:00am to 10:00am\n\t4:30pm to 6:00pm";
+}
+
+else if (area==4){
+		cout<<"Power Status: Loadshedding Schedule\n";
+	cout<<"\t8:00am to 10:00am\n\t4:30pm to 6:00pm\n\t10:00pm to 11:00pm";
+}
+else if (area==5){
+	cout<<"Power Status: Loadshedding Schedule\n";
+	cout<<"\t8:00am to 10:00am";
+}
+else if (area==6){
+	cout<<"Power Status: Loadshedding Free Area";
+}
+else if (area==7){
+	cout<<"Power Status: Loadshedding Schedule\n";
+	cout<<"\t8:00am to 10:00am\n\t4:30pm to 6:00pm";
+}
+else if (area==8){
+	cout<<"Power Status: Loadshedding Free Area";
+}
+else if (area==9){
+	cout<<"Power Status: Loadshedding Free Area";
+}
+else if (area==10){
+	cout<<"Power Status: Loadshedding Schedule\n";
+	cout<<"\t8:30am to 10:00am\n\t1:30pm to 2:30pm\n\t6:00pm to 8:00pm\n\t11:00pm to 12:00am";
+}
+else if (area==11){
+	cout<<"Power Status: Loadshedding Schedule\n";
+	cout<<"\t8:30am to 10:00am\n\t1:30pm to 2:30pm\n\t11:00pm to 12:00am";
+}
+else if (area==12){
+	cout<<"Power Status: Loadshedding Schedule\n";
+	cout<<"\t8:30am to 10:00am\n\t4:30pm to 6:00pm";
+}
+else if (area==13){
+	cout<<"Power Status: Loadshedding Schedule\n";
+	cout<<"\t8:30am to 10:00am\n\t1:30pm to 2:30pm\n\t11:00pm to 12:00am";
+}
+else if (area==14){
+	cout<<"Power Status: Loadshedding Schedule\n";
+	cout<<"\t8:30am to 10:00am\n\t4:30pm to 6:00pm";
+}
+
+else if (area==15){
+	cout<<"Power Status: Loadshedding Schedule\n";
+	cout<<"\t8:00am to 10:00am\n\t4:00pm to 6:00pm";
+	
+}
+else if (area==16){
+	cout<<"Power Status: Loadshedding Schedule\n";
+	cout<<"\t8:30am to 10:00am";
+}
+else if (area==17){
+	cout<<"Power Status: Loadshedding Free Area";
+}
+else if (area==18){
+	cout<<"Power Status: Loadshedding Free Area";
+}
+else if (area==19){
+	cout<<"Power Status: Loadshedding Schedule\n";
+	cout<<"\t8:30am to 10:00am\n\t1:30pm to 2:30pm\n\t6:00pm to 8:00pm\n\t11:00pm to 12:00am";
+}
+else if (area==20){
+	cout<<"Power Status: Loadshedding Free Area";
+}
+else if (area==21){
+	cout<<"Power Status: Loadshedding Free Area";
+}
+else if (area==22){
+	cout<<"Power Status: Loadshedding Free Area";
+}
+
+}
+
+
+void areas_name(string username){
+	string karachiAreas[22] = {
+        "Clifton",
+        "Defence",
+        "Gulshan-e-Iqbal",
+        "North Nazimabad",
+        "Saddar",
+        "Gulistan-e-Johar",
+        "Malir",
+        "Gulshan-e-Maymar",
+        "Korangi",
+        "Landhi",
+        "Lyari",
+        "Shah Faisal Colony",
+        "Orangi Town",
+        "Baldia Town",
+        "New Karachi",
+        "Nazimabad",
+        "Gulberg",
+        "Kemari",
+        "SITE",
+        "Karachi Cantonment",
+        "Buffer Zone",
+        "Gulshan-e-Hadeed",
+    };
+
+  for (int i=0 ; i<22 ; i++) {
+  	cout<<"\t"<<"["<<i+1<<"]\t"<<karachiAreas[i]<<"\t"<<endl;
+  }
+
+
+}
+
+void find_us(string username){
+cout<<"---------------------------------------------------------------------------------------------------------------------\n\n";
+cout<<"\t\t\t\t\tFIND US\t\t\t\t";
+cout<<"\n\n---------------------------------------------------------------------------------------------------------------------\n\n";
+string find[18]={
+"KE - Technical Support IBC, 24th East Street, DHA , Karachi - Pakistan",
+"K-Electric IBC Garden, Agha Khan III Road, Near Makki Masjid, Karachi - Pakistan",
+"K-Electric IBC Gulshan, Civic Center Flyover, Karachi - Pakistan",
+"KE DHA-1 Grid Station, Karachi - Pakistan",
+"KE Smart Grid, Elander Road, Karachi - Pakistan",
+"KE Powerhouse, Elander Road, Karachi - Pakistan",
+"K-Electric IBC Johar-I, Johar Chowrangi Rd, Gulistan e Johar, Karachi, Pakistan",
+"KDA KE Grid Station, Karachi, Sindh - Pakistan",
+"K Electric Landhi Centre, Landhi Road, Karachi - Pakistan",
+"K-Electric IBC Clifton, Mai Kolachi Bypass, Karachi - Pakistan",
+"KE Malir Cantt Grid Station, E Malir Cantt. Rd, Karachi 75070 Malir Cantt. Rd, Karachi",
+"KE Queens Road Grid Station, Moulvi Tamizuddin Khan Road, Karachi - Pakistan",
+"North Karachi Grid Station, Karachi - Pakistan",
+"K-Electric IBC F.B. Area, Shafiq Textile Mills, Karachi - Pakistan",
+"KE Clifton Grid Station, 4 Shahrah-e-Ghalib, Shahrah-e-Ghalib, Karachi",
+"KE Electric, Sharah-e-Quaideen Service Rd, Karachi, Pakistan",
+"K-Electric, House # 39-B, Sunset Boulevard, Phase-II, Defence Housing Authority, Karachi - Pakistan",
+"Tipu Sultan Rd Karachi Branch"};
+
+for (int i=0 ; i<18 ; i++){
+	cout<<"["<<i+1<<"] "<<find[i]<<"\t"<<endl;
+}
+
+
+
+}
