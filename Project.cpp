@@ -69,7 +69,9 @@ void login(){
     }else{
         system("cls");
         cout<<"Invalid Information"<<endl;
-    }
+    sleep(2);
+    main();
+	}
   
   
   
@@ -91,25 +93,32 @@ void registration(){
         ofstream f1("records.txt",ios::app);
         f1<<username<<" "<<password<<" "<<endl;
         system("cls");
-        int con_arr[]= {1, 2, 3, 4, 5, 6, 7, 8, 9};
-        int size = 0;
-        for (int i=0 ; i<13 ; i++) {
-        	con_arr[i]= rand();
-        	size++;
-        }
-        
-    unsigned int consumer_num = 0; 
-	for (int i = 0; i <13; i++)  {
-	 consumer_num = consumer_num * 10 + rand() % 10;
-	}
+       int con_arr[13];
+    int size = 0;
+
+    // Initialize random number generator
+    srand(time(NULL));
+
+    for (int i = 0; i < 13; i++) {
+        con_arr[i] = rand();
+        size++;
+    }
+
+    unsigned int consumer_num = 0;
+    for (int i = 0; i < 13; i++) {
+        consumer_num = consumer_num * 10 + rand() % 10;
+    }
+
+   cout << "Consumer Number: " << consumer_num <<endl;
         ofstream f2("user_details.txt",ios::app);
-        f2<<username<<" "<<address<<" "<<city<<" "<<consumer_num<< endl;
+        f2<<" Username: "<<username<<" / Address: "<<address<<" / City: "<<city<<" / Consumer No: "<<consumer_num<< endl;
 		cout<<"\nRegistration is successful\n";
         main();
     }
 
 
 void menu(string username) {
+	system("cls");
 	int a;
 		
 	cout<<"Hi, Welcome to the Kelectric WhatsApp Self Service"<<endl;
@@ -360,7 +369,12 @@ void bill_cal(string username){
 	else {
 	cout<<"Your Unit is according to rate_3 is "<<rate_3<<":\n"<<"Your Total bill is: "<<units*rate_3<<"Rs";
 	}
-	
+	int c;
+	cout<<endl<<"Press 0 to return : ";
+	cin>>c;
+	if(c ==0 ){
+		menu(username);
+	}
 }
 
 void tech(string username) {
@@ -385,6 +399,8 @@ void tech(string username) {
         cout<<"Message exceeds the word limit of 1000 characters." << endl;
     } else {
         cout<<"Complaint Successfully Registered." << endl;
+        sleep(2);
+        menu(username);
     }
 }
 
@@ -399,7 +415,9 @@ else if (opt==2) {
         cout<<"Message exceeds the word limit of 1000 characters." << endl;
     } else {
         cout<<"Complaint Successfully Registered." << endl;
-    }
+         sleep(2);
+        menu(username);
+	}
 	
 }
 else if (opt==3){
@@ -413,7 +431,9 @@ else if (opt==3){
         cout<<"Message exceeds the word limit of 1000 characters." << endl;
     } else {
         cout<<"Complaint Successfully Registered." << endl;
-    }
+         sleep(2);
+        menu(username);
+	}
 }
 else if (opt == 4) {
     user_d(username);
@@ -426,6 +446,7 @@ else if (opt == 4) {
         cout<<"Message exceeds the word limit of 1000 characters." << endl;
     } else {
         cout<<"Complaint Successfully Registered." << endl;
+   
     }
 }
 else {
@@ -452,120 +473,12 @@ void bill_comp(string username) {
 	
 	
 void power_status(string username){
-
-void areas_name(string);
-int area;
-cout<<"---------------------------------------------------------------------------------------------------------------------\n\n";
+	
+	system("cls");
+	cout<<"---------------------------------------------------------------------------------------------------------------------\n\n";
 cout<<"\t\t\t\t\tArea Names\t\t\t\t";
 cout<<"\n\n---------------------------------------------------------------------------------------------------------------------\n\n";
-areas_name(username);
-cout<<endl;
-  while (true) {
-        cout << "Enter Number According to Your Area: ";
-        if (!(cin >> area)) {
-            cout << "Invalid Input! Please enter a number.\n";
-            cin.clear();  // Clear error state
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');  // Discard remaining input
-            continue;
-        }
 
-        if (area >= 1 && area <= 22) {
-            break;  // Valid option chosen, exit the loop
-        }
-
-        cout << "Invalid Input! Choose Correct Option.\n";
-        areas_name(username);
-    }
-	
-	
-if (area == 1) {
-	cout<<"Power Status: Loadshedding Free Area";
-}
-
-else if (area==2){
-	cout<<"Power Status: Loadshedding Free Area";
-}
-
-else if (area==3){
-	cout<<"Power Status: Loadshedding Schedule\n";
-	cout<<"\t8:00am to 10:00am\n\t4:30pm to 6:00pm";
-}
-
-else if (area==4){
-		cout<<"Power Status: Loadshedding Schedule\n";
-	cout<<"\t8:00am to 10:00am\n\t4:30pm to 6:00pm\n\t10:00pm to 11:00pm";
-}
-else if (area==5){
-	cout<<"Power Status: Loadshedding Schedule\n";
-	cout<<"\t8:00am to 10:00am";
-}
-else if (area==6){
-	cout<<"Power Status: Loadshedding Free Area";
-}
-else if (area==7){
-	cout<<"Power Status: Loadshedding Schedule\n";
-	cout<<"\t8:00am to 10:00am\n\t4:30pm to 6:00pm";
-}
-else if (area==8){
-	cout<<"Power Status: Loadshedding Free Area";
-}
-else if (area==9){
-	cout<<"Power Status: Loadshedding Free Area";
-}
-else if (area==10){
-	cout<<"Power Status: Loadshedding Schedule\n";
-	cout<<"\t8:30am to 10:00am\n\t1:30pm to 2:30pm\n\t6:00pm to 8:00pm\n\t11:00pm to 12:00am";
-}
-else if (area==11){
-	cout<<"Power Status: Loadshedding Schedule\n";
-	cout<<"\t8:30am to 10:00am\n\t1:30pm to 2:30pm\n\t11:00pm to 12:00am";
-}
-else if (area==12){
-	cout<<"Power Status: Loadshedding Schedule\n";
-	cout<<"\t8:30am to 10:00am\n\t4:30pm to 6:00pm";
-}
-else if (area==13){
-	cout<<"Power Status: Loadshedding Schedule\n";
-	cout<<"\t8:30am to 10:00am\n\t1:30pm to 2:30pm\n\t11:00pm to 12:00am";
-}
-else if (area==14){
-	cout<<"Power Status: Loadshedding Schedule\n";
-	cout<<"\t8:30am to 10:00am\n\t4:30pm to 6:00pm";
-}
-
-else if (area==15){
-	cout<<"Power Status: Loadshedding Schedule\n";
-	cout<<"\t8:00am to 10:00am\n\t4:00pm to 6:00pm";
-	
-}
-else if (area==16){
-	cout<<"Power Status: Loadshedding Schedule\n";
-	cout<<"\t8:30am to 10:00am";
-}
-else if (area==17){
-	cout<<"Power Status: Loadshedding Free Area";
-}
-else if (area==18){
-	cout<<"Power Status: Loadshedding Free Area";
-}
-else if (area==19){
-	cout<<"Power Status: Loadshedding Schedule\n";
-	cout<<"\t8:30am to 10:00am\n\t1:30pm to 2:30pm\n\t6:00pm to 8:00pm\n\t11:00pm to 12:00am";
-}
-else if (area==20){
-	cout<<"Power Status: Loadshedding Free Area";
-}
-else if (area==21){
-	cout<<"Power Status: Loadshedding Free Area";
-}
-else if (area==22){
-	cout<<"Power Status: Loadshedding Free Area";
-}
-
-}
-
-
-void areas_name(string username){
 	string karachiAreas[22] = {
         "Clifton",
         "Defence",
@@ -594,10 +507,160 @@ void areas_name(string username){
   for (int i=0 ; i<22 ; i++) {
   	cout<<"\t"<<"["<<i+1<<"]\t"<<karachiAreas[i]<<"\t"<<endl;
   }
+    cout<<endl <<"Enter 0 to Go back "<<endl <<endl;
+int area;
 
+cout<<endl;
+  while (true) {
+        cout << "Enter Number According to Your Area: ";
+        if (!(cin >> area)) {
+            cout << "Invalid Input! Please enter a number.\n";
+            cin.clear();  // Clear error state
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');  // Discard remaining input
+            continue;
+        }
+
+        if (area >= 0 && area <= 22) {
+            break;  // Valid option chosen, exit the loop
+        }
+
+        cout << "Invalid Input! Choose Correct Option.\n";
+        sleep(3);
+power_status(username); 
+    }
+
+	if(area ==0){
+	menu(username);	
+	}
+else if (area == 1) {
+	cout<<"Power Status: Loadshedding Free Area";
+sleep(3);
+power_status(username);
 
 }
 
+else if (area==2){
+	cout<<"Power Status: Loadshedding Free Area";
+sleep(3);
+power_status(username);
+}
+
+else if (area==3){
+	cout<<"Power Status: Loadshedding Schedule\n";
+	cout<<"\t8:00am to 10:00am\n\t4:30pm to 6:00pm";
+sleep(3);
+power_status(username);
+
+}
+
+else if (area==4){
+		cout<<"Power Status: Loadshedding Schedule\n";
+	cout<<"\t8:00am to 10:00am\n\t4:30pm to 6:00pm\n\t10:00pm to 11:00pm";
+sleep(3);
+power_status(username);
+}
+else if (area==5){
+	cout<<"Power Status: Loadshedding Schedule\n";
+	cout<<"\t8:00am to 10:00am";
+sleep(3);
+power_status(username);
+
+}
+else if (area==6){
+	cout<<"Power Status: Loadshedding Free Area";
+sleep(3);
+power_status(username);
+}
+else if (area==7){
+	cout<<"Power Status: Loadshedding Schedule\n";
+	cout<<"\t8:00am to 10:00am\n\t4:30pm to 6:00pm";
+sleep(3);
+power_status(username);
+}
+else if (area==8){
+	cout<<"Power Status: Loadshedding Free Area";
+sleep(3);
+power_status(username);
+}
+else if (area==9){
+	cout<<"Power Status: Loadshedding Free Area";
+sleep(3);
+power_status(username);
+}
+else if (area==10){
+	cout<<"Power Status: Loadshedding Schedule\n";
+	cout<<"\t8:30am to 10:00am\n\t1:30pm to 2:30pm\n\t6:00pm to 8:00pm\n\t11:00pm to 12:00am";
+sleep(3);
+power_status(username);
+}
+else if (area==11){
+	cout<<"Power Status: Loadshedding Schedule\n";
+	cout<<"\t8:30am to 10:00am\n\t1:30pm to 2:30pm\n\t11:00pm to 12:00am";
+sleep(3);
+power_status(username);
+}
+else if (area==12){
+	cout<<"Power Status: Loadshedding Schedule\n";
+	cout<<"\t8:30am to 10:00am\n\t4:30pm to 6:00pm";
+sleep(3);
+power_status(username);
+}
+else if (area==13){
+	cout<<"Power Status: Loadshedding Schedule\n";
+	cout<<"\t8:30am to 10:00am\n\t1:30pm to 2:30pm\n\t11:00pm to 12:00am";
+sleep(3);
+power_status(username);
+}
+else if (area==14){
+	cout<<"Power Status: Loadshedding Schedule\n";
+	cout<<"\t8:30am to 10:00am\n\t4:30pm to 6:00pm";
+sleep(3);
+power_status(username);
+}
+else if (area==15){
+	cout<<"Power Status: Loadshedding Schedule\n";
+	cout<<"\t8:00am to 10:00am\n\t4:00pm to 6:00pm";
+sleep(3);
+power_status(username);
+}
+else if (area==16){
+	cout<<"Power Status: Loadshedding Schedule\n";
+	cout<<"\t8:30am to 10:00am";
+sleep(3);
+power_status(username);
+}
+else if (area==17){
+	cout<<"Power Status: Loadshedding Free Area";
+sleep(3);
+power_status(username);
+}
+else if (area==18){
+	cout<<"Power Status: Loadshedding Free Area";
+sleep(3);
+power_status(username);
+}
+else if (area==19){
+	cout<<"Power Status: Loadshedding Schedule\n";
+	cout<<"\t8:30am to 10:00am\n\t1:30pm to 2:30pm\n\t6:00pm to 8:00pm\n\t11:00pm to 12:00am";
+sleep(3);
+power_status(username);
+}
+else if (area==20){
+	cout<<"Power Status: Loadshedding Free Area";
+sleep(3);
+power_status(username);
+}
+else if (area==21){
+	cout<<"Power Status: Loadshedding Free Area";
+sleep(3);
+power_status(username);
+}
+else if (area==22){
+	cout<<"Power Status: Loadshedding Free Area";
+sleep(3);
+power_status(username);
+}
+}
 void find_us(string username){
 cout<<"---------------------------------------------------------------------------------------------------------------------\n\n";
 cout<<"\t\t\t\t\tFIND US\t\t\t\t";
@@ -626,6 +689,11 @@ for (int i=0 ; i<18 ; i++){
 	cout<<"["<<i+1<<"] "<<find[i]<<"\t"<<endl;
 }
 
-
+int c;
+cout<<endl<<endl<<"Enter 0 to go back : ";
+cin>>c;
+if(c == 0){
+	menu(username);
+}
 
 }
