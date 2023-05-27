@@ -377,6 +377,11 @@ else {
     cout << "Your unit is according to rate_3: " << rate_3 << endl;
     cout << "Your total bill is: " << total_amt << " Rs" << endl;
 }
+ofstream Unit("unit.txt", ios::app);
+    Unit << username << " " << month_name << " " << total_amt << endl;
+    Unit.close();
+
+	
 	int c;
 	cout<<endl<<"Press 0 to return : ";
 	cin>>c;
@@ -384,10 +389,7 @@ else {
 		menu(username);
 	}
 	
-	ofstream Unit("unit.txt" , ios::app);
-	Unit.open("unit.txt");
-	Unit<<username<<" "<<month_name<<" "<<total_amt<<endl;
-	Unit.close();
+	
 	
 }
 
