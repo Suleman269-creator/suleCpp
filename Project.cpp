@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include <cstdlib>
 #include <iomanip>
-#include <ctime>
+#include <conio.h>
 #include <string>
 #include <limits>
 using namespace std;
@@ -40,14 +40,26 @@ int main(){
 }
 
 void login(){
-    
+    int ch;
     string username,password, id , pass ;
     bool found = false;
     system("cls");
     cout<<"Enter Your username : ";
     cin>>username;
     cout<<"Enter Your Password : ";
-    cin>>password;
+    ch = _getch();
+    while (ch != 13) {
+        if (ch == 8) {
+            if (!password.empty()) {
+                cout << "\b \b"; // Erase the character from the screen
+                password.erase(password.size() - 1);
+            }
+        } else {
+            password.push_back(ch);
+            cout << '*';
+        }
+        ch = _getch();
+    }
 
     ifstream file("records.txt");
 
@@ -78,13 +90,25 @@ void login(){
 }
 
 void registration(){
- 
+	int ch;
         string username, password , acc_num, address, city, province;
         system("cls");
         cout<<"Enter Username: ";
         cin>>username;
         cout<<"Enter the Password : ";
-        cin>>password;
+        ch = _getch();
+    while (ch != 13) {
+        if (ch == 8) {
+            if (!password.empty()) {
+                cout << "\b \b"; // Erase the character from the screen
+                password.erase(password.size() - 1);
+            }
+        } else {
+            password.push_back(ch);
+            cout << '*';
+        }
+        ch = _getch();
+    }
         cout<<"Enter Address: ";
         cin>>address;
         cout<<"Enter City: ";
@@ -240,96 +264,391 @@ void Dec(string username);
 }
 
 void jan(string username) {
+    string month, user;
+    int unit, amount;
+    bool found = false;
 
     user_d(username);
-	cout<<endl;
-	cout<<"\t----January----\t"<<endl<<endl;
+    cout << endl;
+    cout << "\t----January----\t" << endl << endl;
 
-	bill_cal(username , "January");
-	
+    ifstream file("unit.txt");
+    while (file >> user >> month >> unit >> amount) {
+        if (username == user && month == "January") {
+            found = true;
+            cout << "Your Bill is already Generated!" << endl;
+            cout << "Your unit is: " << unit << endl;
+            cout << "Your Amount is: " << amount << endl;
+            break;
+        }
+
+    }
+
+    if (!found) {
+        bill_cal(username, "January");
+    }
+    
+        int c;
+	cout<<endl<<"Press 0 to return : ";
+	cin>>c;
+	if(c ==0 ){
+		menu(username);
+	}
 }
 
 void feb(string username) {
+	 string month, user;
+    int unit, amount;
+    bool found = false;
+
 	user_d(username);
 	cout<<endl;
 cout<<"\t----February----\t"<<endl<<endl;
-	bill_cal(username , "February");
+ ifstream file("unit.txt");
+    while (file >> user >> month >> unit >> amount) {
+        if (username == user && month == "February") {
+            found = true;
+            cout << "Your Bill is already Generated!" << endl;
+            cout << "Your unit is: " << unit << endl;
+            cout << "Your Amount is: " << amount << endl;
+            break;
+        }
+
+    }
+
+    if (!found) {
+        bill_cal(username, "February");
+    }
+    
+        int c;
+	cout<<endl<<"Press 0 to return : ";
+	cin>>c;
+	if(c ==0 ){
+		menu(username);
+	}
 }
+
 void Mar(string username){
 	
+	 string month, user;
+    int unit, amount;
+    bool found = false;
+
 	user_d(username);
 	cout<<endl;
 cout<<"\t----March----\t"<<endl<<endl;
-	bill_cal(username , "March");
+ ifstream file("unit.txt");
+    while (file >> user >> month >> unit >> amount) {
+        if (username == user && month == "March") {
+            found = true;
+            cout << "Your Bill is already Generated!" << endl;
+            cout << "Your unit is: " << unit << endl;
+            cout << "Your Amount is: " << amount << endl;
+            break;
+        }
+
+    }
+
+    if (!found) {
+        bill_cal(username, "March");
+    }
+    
+        int c;
+	cout<<endl<<"Press 0 to return : ";
+	cin>>c;
+	if(c ==0 ){
+		menu(username);
+	}
 
 }
 void Apr(string username){
+	 string month, user;
+    int unit, amount;
+    bool found = false;
+
 	user_d(username);
 	cout<<endl;
 cout<<"\t----April----\t"<<endl<<endl;
-	bill_cal(username , "April");
+ ifstream file("unit.txt");
+    while (file >> user >> month >> unit >> amount) {
+        if (username == user && month == "April") {
+            found = true;
+            cout << "Your Bill is already Generated!" << endl;
+            cout << "Your unit is: " << unit << endl;
+            cout << "Your Amount is: " << amount << endl;
+            break;
+        }
 
+    }
+
+    if (!found) {
+        bill_cal(username, "April");
+    }
+    
+        int c;
+	cout<<endl<<"Press 0 to return : ";
+	cin>>c;
+	if(c ==0 ){
+		menu(username);
+	}
 }
 void May(string username){
+	 string month, user;
+    int unit, amount;
+    bool found = false;
+
 	user_d(username);
 	cout<<endl;
 cout<<"\t----May----\t"<<endl<<endl;
-	bill_cal(username , "May");
+ ifstream file("unit.txt");
+    while (file >> user >> month >> unit >> amount) {
+        if (username == user && month == "May") {
+            found = true;
+            cout << "Your Bill is already Generated!" << endl;
+            cout << "Your unit is: " << unit << endl;
+            cout << "Your Amount is: " << amount << endl;
+            break;
+        }
+
+    }
+
+    if (!found) {
+        bill_cal(username, "May");
+    }
+    
+        int c;
+	cout<<endl<<"Press 0 to return : ";
+	cin>>c;
+	if(c ==0 ){
+		menu(username);
+	}
 
 }
 void Jun(string username){
+	 string month, user;
+    int unit, amount;
+    bool found = false;
+
 	user_d(username);
 	cout<<endl;
 cout<<"\t----June----\t"<<endl<<endl;
-	bill_cal(username , "June");
+ ifstream file("unit.txt");
+    while (file >> user >> month >> unit >> amount) {
+        if (username == user && month == "June") {
+            found = true;
+            cout << "Your Bill is already Generated!" << endl;
+            cout << "Your unit is: " << unit << endl;
+            cout << "Your Amount is: " << amount << endl;
+            break;
+        }
+
+    }
+
+    if (!found) {
+        bill_cal(username, "June");
+    }
+    
+        int c;
+	cout<<endl<<"Press 0 to return : ";
+	cin>>c;
+	if(c ==0 ){
+		menu(username);
+	}
 
 }
 void Jul(string username){
 
+	 string month, user;
+    int unit, amount;
+    bool found = false;
+
 	user_d(username);
 	cout<<endl;
 cout<<"\t----July----\t"<<endl<<endl;
-	bill_cal(username , "July");
+ ifstream file("unit.txt");
+    while (file >> user >> month >> unit >> amount) {
+        if (username == user && month == "July") {
+            found = true;
+            cout << "Your Bill is already Generated!" << endl;
+            cout << "Your unit is: " << unit << endl;
+            cout << "Your Amount is: " << amount << endl;
+            break;
+        }
 
+    }
+
+    if (!found) {
+        bill_cal(username, "July");
+    }
+    
+        int c;
+	cout<<endl<<"Press 0 to return : ";
+	cin>>c;
+	if(c ==0 ){
+		menu(username);
+	}
 }
 void Aug(string username){
+	 string month, user;
+    int unit, amount;
+    bool found = false;
 
 	user_d(username);
 	cout<<endl;
 cout<<"\t----August----\t"<<endl<<endl;
-	bill_cal(username , "August");
+ ifstream file("unit.txt");
+    while (file >> user >> month >> unit >> amount) {
+        if (username == user && month == "August") {
+            found = true;
+            cout << "Your Bill is already Generated!" << endl;
+            cout << "Your unit is: " << unit << endl;
+            cout << "Your Amount is: " << amount << endl;
+            break;
+        }
+
+    }
+
+    if (!found) {
+        bill_cal(username, "August");
+    }
+    
+        int c;
+	cout<<endl<<"Press 0 to return : ";
+	cin>>c;
+	if(c ==0 ){
+		menu(username);
+	}
 
 }
 void Sep(string username){
 
+	 string month, user;
+    int unit, amount;
+    bool found = false;
+
 	user_d(username);
 	cout<<endl;
 cout<<"\t----September----\t"<<endl<<endl;
-	bill_cal(username , "September");
+ ifstream file("unit.txt");
+    while (file >> user >> month >> unit >> amount) {
+        if (username == user && month == "September") {
+            found = true;
+            cout << "Your Bill is already Generated!" << endl;
+            cout << "Your unit is: " << unit << endl;
+            cout << "Your Amount is: " << amount << endl;
+            break;
+        }
 
+    }
+
+    if (!found) {
+        bill_cal(username, "September");
+    }
+    
+        int c;
+	cout<<endl<<"Press 0 to return : ";
+	cin>>c;
+	if(c ==0 ){
+		menu(username);
+	}
 }
 void Oct(string username){
 	
+		 string month, user;
+    int unit, amount;
+    bool found = false;
+
 	user_d(username);
 	cout<<endl;
 cout<<"\t----October----\t"<<endl<<endl;
-	bill_cal(username , "October");
+ ifstream file("unit.txt");
+    while (file >> user >> month >> unit >> amount) {
+        if (username == user && month == "October") {
+            found = true;
+            cout << "Your Bill is already Generated!" << endl;
+            cout << "Your unit is: " << unit << endl;
+            cout << "Your Amount is: " << amount << endl;
+            break;
+        }
+
+    }
+
+    if (!found) {
+        bill_cal(username, "October");
+    }
+    
+        int c;
+	cout<<endl<<"Press 0 to return : ";
+	cin>>c;
+	if(c ==0 ){
+		menu(username);
+	}
 
 }
 void Nov(string username){
 
+	 string month, user;
+    int unit, amount;
+    bool found = false;
+
 	user_d(username);
 	cout<<endl;
-cout<<"\t----November----\t"<<endl<<endl;
-	bill_cal(username , "November");
+cout<<"\t----February----\t"<<endl<<endl;
+ ifstream file("unit.txt");
+    while (file >> user >> month >> unit >> amount) {
+        if (username == user && month == "November") {
+            found = true;
+            cout << "Your Bill is already Generated!" << endl;
+            cout << "Your unit is: " << unit << endl;
+            cout << "Your Amount is: " << amount << endl;
+            break;
+        }
+
+    }
+
+    if (!found) {
+        bill_cal(username, "November");
+    }
+    
+        int c;
+	cout<<endl<<"Press 0 to return : ";
+	cin>>c;
+	if(c ==0 ){
+		menu(username);
+	}
 
 }
 void Dec(string username){
 
+	 string month, user;
+    int unit, amount;
+    bool found = false;
+
 	user_d(username);
 	cout<<endl;
 cout<<"\t----December----\t"<<endl<<endl;
-	bill_cal(username , "December");
+ ifstream file("unit.txt");
+    while (file >> user >> month >> unit >> amount) {
+        if (username == user && month == "December") {
+            found = true;
+            cout << "Your Bill is already Generated!" << endl;
+            cout << "Your unit is: " << unit << endl;
+            cout << "Your Amount is: " << amount << endl;
+            break;
+        }
+
+    }
+
+    if (!found) {
+        bill_cal(username, "December");
+    }
+    
+        int c;
+	cout<<endl<<"Press 0 to return : ";
+	cin>>c;
+	if(c ==0 ){
+		menu(username);
+	}
 
 }
 
@@ -378,7 +697,7 @@ else {
     cout << "Your total bill is: " << total_amt << " Rs" << endl;
 }
 ofstream Unit("unit.txt", ios::app);
-    Unit << username << " " << month_name << " " << total_amt << endl;
+    Unit<<username << " " <<month_name<<" "<<units<<" " <<total_amt << endl;
     Unit.close();
 
 	
@@ -394,6 +713,7 @@ ofstream Unit("unit.txt", ios::app);
 }
 
 void tech(string username) {
+	string comp, message;
 	string array[4] = {"Broken Wire" , "Sparking" , "Meter Issue" , "Area Light Issue"};
 	for (int i=0 ; i<=3 ; i++){
 		cout<<setw(20)<<"Press "<<1+i<<" FOR "<<array[i];
@@ -406,7 +726,7 @@ void tech(string username) {
 	
 	if (opt==1){
 	user_d(username);
-	string message;
+	comp = "Broken-Wire";
 	cout<<"Enter Complain Message for Broken Wire (100 Word Limits): ";
     cin.ignore();
     getline(cin, message);
@@ -422,7 +742,7 @@ void tech(string username) {
 
 else if (opt==2) {
 	user_d(username);
-	string message;
+	comp = "Sparking";
 	cout<<"Enter Complain Message for Sparking (100 Word Limits): ";
 	    cin.ignore();
     getline(cin, message);
@@ -438,7 +758,7 @@ else if (opt==2) {
 }
 else if (opt==3){
 	user_d(username);
-	string message;
+	comp = "Meter-Issue";
 	cout<<"Enter Complain Message for Meter Issue (100 Word Limits): ";
     cin.ignore();
     getline(cin, message);
@@ -453,7 +773,7 @@ else if (opt==3){
 }
 else if (opt == 4) {
     user_d(username);
-    string message;
+	comp = "Area-Light-Issue";
     cout << "Enter Complain Message for Area Light Issue (100 Word Limits): ";
     cin.ignore();
     getline(cin, message);
@@ -469,6 +789,17 @@ else {
 	cout<<"Invalid Option";
 	menu(username);
 }
+ofstream f2("complaint.txt", ios::app);
+    if (f2.is_open()) {    
+        f2 << username << " " << comp << " " << message << endl;
+        f2.close();
+        
+        cout << "Data written to complaint.txt successfully." << endl;
+    } else {
+        cerr << "Unable to open file complaint.txt." << endl;
+    }
+    
+    
 }
 
 
