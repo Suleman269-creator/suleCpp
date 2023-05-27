@@ -18,6 +18,7 @@ void tech(string);
 void bill_comp(string);
 void power_status(string);
 void find_us(string);
+void comp_hist(string);
 
 int main(){
     int c;
@@ -109,6 +110,8 @@ void registration(){
         }
         ch = _getch();
     }
+    
+    cout<<endl;
         cout<<"Enter Address: ";
         cin>>address;
         cout<<"Enter City: ";
@@ -146,7 +149,8 @@ void menu(string username) {
 	cout<<"\n\t(3) Billing Complaints "<<endl;
 	cout<<"\n\t(4) Power Status & Load Shedding Schedule "<<endl;
 	cout<<"\n\t(5) Find Us "<<endl;
-	cout<<"\n\t(6) Exit"<<endl<<endl;
+	cout<<"\n\t(6) Complain History "<<endl;
+	cout<<"\n\t(7) Exit"<<endl<<endl;
 	
 	cout<<"Enter Your choice: ";
 	cin>>a;
@@ -168,6 +172,9 @@ void menu(string username) {
 		find_us(username);
 	}
 	else if (a==6) {
+		comp_hist(username);
+	}
+	else if (a==7) {
 		cout<<"Exit";
 	}
 	else {
@@ -176,7 +183,30 @@ void menu(string username) {
 	
 
 }
-
+void comp_hist(string username) {
+    system("cls");
+    string search_string = username;
+    ifstream file("complain.txt");
+    string line;
+    bool isfound = false;
+    cout<<"\t---------------- Complain History ----------------"<<endl<<endl;
+    while (getline(file, line)) {
+        if (line.find(search_string) != string::npos) {
+            cout <<"\t"<< line << endl;
+         isfound = true; 
+        }
+    }
+    if(isfound != true){
+        cout<<"No Complain History found "<<endl;
+    }
+    file.close();
+ int c;
+ cout<<"Press 0 to go back : ";
+ cin>>c;
+ if(c==0){
+     menu(username);
+ }
+}
 
 void month (string username){
 	const int max= 12;
@@ -724,12 +754,16 @@ void tech(string username) {
 	cout<<"Press options: ";
 	cin>>opt;
 	
-	if (opt==1){
-	user_d(username);
-	comp = "Broken-Wire";
-	cout<<"Enter Complain Message for Broken Wire (100 Word Limits): ";
+    if (opt==1){
+    user_d(username);
+    comp = "Broken-Wire";
+    cout<<"Enter Complain Message for Broken Wire (100 Word Limits): ";
     cin.ignore();
     getline(cin, message);
+
+    ofstream File("complain.txt", ios::app);
+    File<<username << " " <<comp<<" "<<message<<endl;
+  File.close();
 
     if (message.length()>1000) {
         cout<<"Message exceeds the word limit of 1000 characters." << endl;
@@ -738,6 +772,7 @@ void tech(string username) {
         sleep(2);
         menu(username);
     }
+
 }
 
 else if (opt==2) {
@@ -747,6 +782,9 @@ else if (opt==2) {
 	    cin.ignore();
     getline(cin, message);
 
+    ofstream File("complain.txt", ios::app);
+    File<<username << " " <<comp<<" "<<message<<endl;
+  File.close();
     if (message.length()>1000) {
         cout<<"Message exceeds the word limit of 1000 characters." << endl;
     } else {
@@ -763,6 +801,9 @@ else if (opt==3){
     cin.ignore();
     getline(cin, message);
 
+    ofstream File("complain.txt", ios::app);
+    File<<username << " " <<comp<<" "<<message<<endl;
+  File.close();
     if (message.length()>1000) {
         cout<<"Message exceeds the word limit of 1000 characters." << endl;
     } else {
@@ -778,6 +819,9 @@ else if (opt == 4) {
     cin.ignore();
     getline(cin, message);
 
+    ofstream File("complain.txt", ios::app);
+    File<<username << " " <<comp<<" "<<message<<endl;
+    File.close();
     if (message.length()>1000) {
         cout<<"Message exceeds the word limit of 1000 characters." << endl;
     } else {
@@ -788,34 +832,34 @@ else if (opt == 4) {
 else {
 	cout<<"Invalid Option";
 	menu(username);
-}
-ofstream f2("complaint.txt", ios::app);
-    if (f2.is_open()) {    
-        f2 << username << " " << comp << " " << message << endl;
-        f2.close();
-        
-        cout << "Data written to complaint.txt successfully." << endl;
-    } else {
-        cerr << "Unable to open file complaint.txt." << endl;
-    }
-    
-    
+}    
 }
 
 
 void bill_comp(string username) {
 	user_d(username);
-	string complain;
+	string complain , comp;
+	comp = "Billing-Complain";
 	cout<<"\nDefine Billing Issue Here (100 Words Limits): ";
 	cin.ignore();
 	getline(cin , complain);
 	
+    ofstream File("complain.txt", ios::app);
+    File<<username << " " <<comp<<" "<<complain<<endl;
+    File.close();
 	if (complain.length()>1000) {
 		cout<<"Message exceeds the word limit of 1000 characters."<<endl;
 	}
 	else {
 		cout<<"Complaint Successfully Registered.";
 	}
+	int c;
+	cout<<endl<<"Press 0 to return : ";
+	cin>>c;
+	if(c ==0 ){
+		menu(username);
+	}
+	
 	}
 	
 	
