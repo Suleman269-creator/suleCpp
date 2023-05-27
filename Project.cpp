@@ -13,7 +13,7 @@ void menu(string);
 void month(string);
 void bill(string);
 void user_d(string);
-void bill_cal(string);
+void bill_cal(string , string);
 void tech(string);
 void bill_comp(string);
 void power_status(string);
@@ -93,25 +93,19 @@ void registration(){
         ofstream f1("records.txt",ios::app);
         f1<<username<<" "<<password<<" "<<endl;
         system("cls");
-       int con_arr[13];
-    int size = 0;
-
-    // Initialize random number generator
-    srand(time(NULL));
-
-    for (int i = 0; i < 13; i++) {
-        con_arr[i] = rand();
-        size++;
-    }
-
-    unsigned int consumer_num = 0;
-    for (int i = 0; i < 13; i++) {
-        consumer_num = consumer_num * 10 + rand() % 10;
-    }
-
-   cout << "Consumer Number: " << consumer_num <<endl;
+        int con_arr[]= {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        int size = 0;
+        for (int i=0 ; i<13 ; i++) {
+        	con_arr[i]= rand();
+        	size++;
+        }
+        
+    unsigned int consumer_num = 0; 
+	for (int i = 0; i <13; i++)  {
+	 consumer_num = consumer_num * 10 + rand() % 10;
+	}
         ofstream f2("user_details.txt",ios::app);
-        f2<<" Username: "<<username<<" / Address: "<<address<<" / City: "<<city<<" / Consumer No: "<<consumer_num<< endl;
+        f2<<"Username: "<<username<<" || Address: "<<address<<" || City: "<<city<<" || Consumer Number: "<<consumer_num<<endl;
 		cout<<"\nRegistration is successful\n";
         main();
     }
@@ -251,7 +245,7 @@ void jan(string username) {
 	cout<<endl;
 	cout<<"\t----January----\t"<<endl<<endl;
 
-	bill_cal(username);
+	bill_cal(username , "January");
 	
 }
 
@@ -259,77 +253,83 @@ void feb(string username) {
 	user_d(username);
 	cout<<endl;
 cout<<"\t----February----\t"<<endl<<endl;
-	bill_cal(username);
+	bill_cal(username , "February");
 }
 void Mar(string username){
 	
 	user_d(username);
 	cout<<endl;
 cout<<"\t----March----\t"<<endl<<endl;
-	bill_cal(username);
+	bill_cal(username , "March");
 
 }
 void Apr(string username){
 	user_d(username);
 	cout<<endl;
 cout<<"\t----April----\t"<<endl<<endl;
-	bill_cal(username);
+	bill_cal(username , "April");
 
 }
 void May(string username){
 	user_d(username);
 	cout<<endl;
 cout<<"\t----May----\t"<<endl<<endl;
-	bill_cal(username);
+	bill_cal(username , "May");
 
 }
 void Jun(string username){
-	
+	user_d(username);
 	cout<<endl;
 cout<<"\t----June----\t"<<endl<<endl;
-	bill_cal(username);
+	bill_cal(username , "June");
 
 }
 void Jul(string username){
 
+	user_d(username);
 	cout<<endl;
 cout<<"\t----July----\t"<<endl<<endl;
-	bill_cal(username);
+	bill_cal(username , "July");
 
 }
 void Aug(string username){
 
+	user_d(username);
 	cout<<endl;
 cout<<"\t----August----\t"<<endl<<endl;
-	bill_cal(username);
+	bill_cal(username , "August");
 
 }
 void Sep(string username){
 
+	user_d(username);
 	cout<<endl;
 cout<<"\t----September----\t"<<endl<<endl;
-	bill_cal(username);
+	bill_cal(username , "September");
 
 }
 void Oct(string username){
 	
+	user_d(username);
 	cout<<endl;
 cout<<"\t----October----\t"<<endl<<endl;
-	bill_cal(username);
+	bill_cal(username , "October");
 
 }
 void Nov(string username){
 
+	user_d(username);
 	cout<<endl;
 cout<<"\t----November----\t"<<endl<<endl;
-	bill_cal(username);
+	bill_cal(username , "November");
 
 }
 void Dec(string username){
 
+	user_d(username);
 	cout<<endl;
 cout<<"\t----December----\t"<<endl<<endl;
-	bill_cal(username);
+	bill_cal(username , "December");
 
 }
 
@@ -351,7 +351,7 @@ void user_d(string username) {
     file.close();
 }
 
-void bill_cal(string username){
+void bill_cal(string username , string month_name){
 	int units;
 	cout<<"Enter Units: ";
 	cin>>units;
@@ -360,21 +360,35 @@ void bill_cal(string username){
 	int rate_2 = 22;
 	int rate_3 = 25;
 	
-	if (units<=100) {
-		cout<<"Your Unit is according to rate_1 is "<<rate_1<<":\n"<<"You Total bill is: "<<units*rate_1<<"Rs";
-	}
-	else if (units<=200) {
-		cout<<"Your Unit is according to rate_2 is "<<rate_2<<":\n"<<"Your Total bill is: "<<units*rate_2<<"Rs";
-	}
-	else {
-	cout<<"Your Unit is according to rate_3 is "<<rate_3<<":\n"<<"Your Total bill is: "<<units*rate_3<<"Rs";
-	}
+	int total_amt;
+	
+if (units <= 100) {
+    total_amt = units * rate_1;
+    cout << "Your unit is according to rate_1: " << rate_1 << endl;
+    cout << "Your total bill is: " << total_amt << " Rs" << endl;
+}
+else if (units <= 200) {
+    total_amt = units * rate_2;
+    cout << "Your unit is according to rate_2: " << rate_2 << endl;
+    cout << "Your total bill is: " << total_amt << " Rs" << endl;
+}
+else {
+    total_amt = units * rate_3;
+    cout << "Your unit is according to rate_3: " << rate_3 << endl;
+    cout << "Your total bill is: " << total_amt << " Rs" << endl;
+}
 	int c;
 	cout<<endl<<"Press 0 to return : ";
 	cin>>c;
 	if(c ==0 ){
 		menu(username);
 	}
+	
+	ofstream Unit("unit.txt" , ios::app);
+	Unit.open("unit.txt");
+	Unit<<username<<" "<<month_name<<" "<<total_amt<<endl;
+	Unit.close();
+	
 }
 
 void tech(string username) {
@@ -570,80 +584,97 @@ else if (area==6){
 	cout<<"Power Status: Loadshedding Free Area";
 sleep(3);
 power_status(username);
+
 }
 else if (area==7){
 	cout<<"Power Status: Loadshedding Schedule\n";
 	cout<<"\t8:00am to 10:00am\n\t4:30pm to 6:00pm";
 sleep(3);
 power_status(username);
+
 }
 else if (area==8){
 	cout<<"Power Status: Loadshedding Free Area";
 sleep(3);
 power_status(username);
+
 }
 else if (area==9){
 	cout<<"Power Status: Loadshedding Free Area";
 sleep(3);
 power_status(username);
+
 }
 else if (area==10){
 	cout<<"Power Status: Loadshedding Schedule\n";
 	cout<<"\t8:30am to 10:00am\n\t1:30pm to 2:30pm\n\t6:00pm to 8:00pm\n\t11:00pm to 12:00am";
 sleep(3);
 power_status(username);
+
 }
 else if (area==11){
 	cout<<"Power Status: Loadshedding Schedule\n";
 	cout<<"\t8:30am to 10:00am\n\t1:30pm to 2:30pm\n\t11:00pm to 12:00am";
 sleep(3);
 power_status(username);
+
 }
 else if (area==12){
 	cout<<"Power Status: Loadshedding Schedule\n";
 	cout<<"\t8:30am to 10:00am\n\t4:30pm to 6:00pm";
 sleep(3);
 power_status(username);
+
 }
 else if (area==13){
 	cout<<"Power Status: Loadshedding Schedule\n";
 	cout<<"\t8:30am to 10:00am\n\t1:30pm to 2:30pm\n\t11:00pm to 12:00am";
 sleep(3);
 power_status(username);
+
 }
 else if (area==14){
 	cout<<"Power Status: Loadshedding Schedule\n";
 	cout<<"\t8:30am to 10:00am\n\t4:30pm to 6:00pm";
 sleep(3);
 power_status(username);
+
 }
+
 else if (area==15){
 	cout<<"Power Status: Loadshedding Schedule\n";
 	cout<<"\t8:00am to 10:00am\n\t4:00pm to 6:00pm";
+	
 sleep(3);
 power_status(username);
+
 }
 else if (area==16){
 	cout<<"Power Status: Loadshedding Schedule\n";
 	cout<<"\t8:30am to 10:00am";
 sleep(3);
 power_status(username);
+
 }
 else if (area==17){
 	cout<<"Power Status: Loadshedding Free Area";
 sleep(3);
 power_status(username);
+
 }
 else if (area==18){
 	cout<<"Power Status: Loadshedding Free Area";
 sleep(3);
 power_status(username);
+
 }
 else if (area==19){
 	cout<<"Power Status: Loadshedding Schedule\n";
 	cout<<"\t8:30am to 10:00am\n\t1:30pm to 2:30pm\n\t6:00pm to 8:00pm\n\t11:00pm to 12:00am";
 sleep(3);
 power_status(username);
+
+
 }
 else if (area==20){
 	cout<<"Power Status: Loadshedding Free Area";
@@ -659,8 +690,15 @@ else if (area==22){
 	cout<<"Power Status: Loadshedding Free Area";
 sleep(3);
 power_status(username);
+
 }
+
+
 }
+
+
+
+
 void find_us(string username){
 cout<<"---------------------------------------------------------------------------------------------------------------------\n\n";
 cout<<"\t\t\t\t\tFIND US\t\t\t\t";
